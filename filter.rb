@@ -8,7 +8,7 @@ Plugin.create(:filter) do
           visible: true,
           role: :timeline ) do |m|
     m.messages.map do |msg|
-      tmp=UserConfig[:filter_mute_kind_client].melt
+      tmp=(UserConfig[:filter_mute_kind_client] || []).melt
       tmp << msg[:source]
       UserConfig[:filter_mute_kind_client]=tmp
     end
